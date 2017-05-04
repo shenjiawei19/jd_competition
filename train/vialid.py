@@ -1,21 +1,24 @@
 import pandas as pd
 
-r1 = pd.read_csv('../action/predict_result-2.csv')
-r2 = pd.read_csv('train_result.csv')
-print (len(r2))
-# r23 = pd.read_csv('train_result_exact.csv')
-# print (len(r23))
+def vialid(result,train):
+    r1 = pd.read_csv(result)
+    r2 = pd.read_csv(train)
+    print (len(r2))
+    # r23 = pd.read_csv('train_result_exact.csv')
+    # print (len(r23))
 
-re = pd.merge(r1,r2,how='inner',on=['user_id'])
-# re2 = pd.merge(r1,r23,how='inner',on=['user_id'])
-print (len(re))
+    re = pd.merge(r1,r2,how='inner',on=['user_id'])
+    # re2 = pd.merge(r1,r23,how='inner',on=['user_id'])
+    print (len(re))
 
-acc = len(re)*1.0/len(r1)
-recall = len(re)*1.0/len(r2)
-print ('accacury:',acc)
-print ('recall:',recall)
-print (6*acc*recall/(5*recall+acc))
+    acc = len(re)*1.0/len(r1)
+    recall = len(re)*1.0/len(r2)
+    print ('accacury:',acc)
+    print ('recall:',recall)
+    print (6*acc*recall/(5*recall+acc))
 
+if __name__ == '__main__':
+    vialid('predict_result-2.csv','train_result.csv')
 # re = pd.merge(r2,r1,how='left',on='user_id')
 # re = re.fillna(0)
 # re = re[re['sku_id_y']==0]
